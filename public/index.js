@@ -2,8 +2,17 @@ function main(){
     const countContainer = document.querySelector('#count-container');
     const incrementButton = document.querySelector('#increment-button');
     const decrementButton = document.querySelector('#decrement-button');
+     
+    fetch('your/api/endpoint')
+    .then(response => response.json())
+    .then(data => {
 
-    let countValue = 0;
+    let countValue = data.count;
+    countContainer.textContent = countValue
+    incrementButton.addEventListener('click', increment);
+    incrementButton.addEventListener('click', decrement);
+    });
+
 
     function increment(){
         countValue++;
